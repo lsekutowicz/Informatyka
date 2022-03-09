@@ -1,40 +1,36 @@
-﻿//Algorytm wyznaczania liczb pierwszych
+﻿//Liczby pierwsze
 #include <iostream>
-using namespace std;
-
-#include <iostream>
-
 using namespace std;
 
 int main()
 {
-    int n, i, p, lp;
-    bool t;
+    int n = 0; //Ile liczb należy wygenerować
+    int lp = 0; //Liczba pierwsza
+    int p = 2; //Liczby naturalne
+    int d = 2; //Dzielnik
 
+    cout << "Ile liczb pierwszych chcesz wyswietlić: ";
     cin >> n;
-
-    lp = 0;
-    p = 2;
+    cout << endl << "Liczby pierwsze: ";
 
     while (lp < n)
     {
-        t = true;
-        for (i = 2; i < p; i++)
-            if (p % i == 0)
+        while (d < p)
+        {
+            if (p % d == 0)
             {
-                t = false;
+                d = 2;
+                p++;
                 break;
             }
-
-        if (t)
+            d++;
+        }
+        if (d >= p)
         {
-            cout << p << " ";
+            cout << p << ", ";
+            d = 2;
+            p++;
             lp++;
         }
-        p++;
     }
-
-    cout << endl;
-
-    return 0;
 }
